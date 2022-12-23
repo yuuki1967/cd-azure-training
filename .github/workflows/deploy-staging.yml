@@ -8,7 +8,7 @@ env:
   ###############################################
   ### Replace <username> with GitHub username ###
   ###############################################
-  DOCKER_IMAGE_NAME: publish_package_training
+  DOCKER_IMAGE_NAME: yuuki1967-azure-ttt
   AZURE_WEBAPP_NAME: yuuki1967-ttt-app
   ###############################################
 jobs:
@@ -55,7 +55,8 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{env.IMAGE_REGISTRY_URL}}/${{ github.repository }}/${{env.DOCKER_IMAGE_NAME}}
-
+          tags: |
+            type=sha,format=long,prefix=
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
@@ -84,7 +85,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{env.AZURE_WEBAPP_NAME}}
-          images: ${{env.IMAGE_REGISTRY_URL}}/${{ github.repository }}/${{env.DOCKER_IMAGE_NAME}}:main
+          images: ${{env.IMAGE_REGISTRY_URL}}/${{ github.repository }}/${{env.DOCKER_IMAGE_NAME}}:${{github.sha}}
 
       - name: Azure logout via Azure CLI
         uses: azure/CLI@v1
