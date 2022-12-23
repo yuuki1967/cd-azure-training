@@ -8,7 +8,7 @@ env:
   ###############################################
   ### Replace <username> with GitHub username ###
   ###############################################
-  DOCKER_IMAGE_NAME: yuuki1967-azure-ttt
+  DOCKER_IMAGE_NAME: publish_package_training
   AZURE_WEBAPP_NAME: yuuki1967-ttt-app
   ###############################################
 jobs:
@@ -55,8 +55,6 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{env.IMAGE_REGISTRY_URL}}/${{ github.repository }}/${{env.DOCKER_IMAGE_NAME}}
-          tags: |
-            type=sha,format=long,prefix=
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
