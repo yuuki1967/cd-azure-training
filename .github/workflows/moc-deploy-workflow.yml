@@ -101,7 +101,7 @@ jobs:
  #         images: ${{env.IMAGE_REGISTRY_URL}}/${{ github.repository }}/${{env.DOCKER_IMAGE_NAME}}:${{ github.sha }}
 
       - name: Azure logout via Azure CLI
-        run: "Azure logout via Azure CLI"
+        run: echo "Azure logout via Azure CLI"
  #       uses: azure/CLI@v1
  #       with:
  #         inlineScript: |
