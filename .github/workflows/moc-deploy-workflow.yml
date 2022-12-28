@@ -1,4 +1,4 @@
-name: Deploy to staging
+name: Deploy to staging(moc)
 
 on:
   pull_request:
@@ -57,7 +57,7 @@ jobs:
 #          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
-        run: "Extract metadata (tags, labels) for Docker"
+        run: echo "Extract metadata (tags, labels) for Docker"
  #       id: meta
  #       uses: docker/metadata-action@v4
  #       with:
@@ -86,7 +86,7 @@ jobs:
  #         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: azure docker-login
-        run: "azure docker-login"
+        run: echo "azure docker-login"
  #       uses: azure/docker-login@v1
  #       with:
  #         login-server: ${{env.IMAGE_REGISTRY_URL}}
