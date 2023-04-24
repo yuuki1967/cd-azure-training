@@ -66,6 +66,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Write Summary
+        run: echo '### Complete Build :medal_sports:' >> $GITHUB_STEP_SUMMARY
 
   Deploy-to-Azure:
     runs-on: ubuntu-latest
@@ -96,3 +98,5 @@ jobs:
             az logout
             az cache purge
             az account clear
+      - name: Write Summary
+        run: echo '### Complete Deploy :rocket:' >> $GITHUB_STEP_SUMMARY
